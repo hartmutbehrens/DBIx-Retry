@@ -7,10 +7,11 @@ use warnings;
 
 #modules
 use Moo;
+use Data::Dumper;
 use Try::Tiny;
 
 has timeout => (is => 'rw', default => sub { return 30 });
-has verbose => (is => 'rw', default => sub { return 0 });
+has verbose => (is => 'rw', default => sub { return 1 });
 
 before run => sub {
 	my $self = shift;
@@ -32,5 +33,6 @@ sub _try_connect {
 	}
 }
 
+sub BUILDARGS {} #just pass all the construction arguments to DBIx::Connector	
 1;
 __END__
