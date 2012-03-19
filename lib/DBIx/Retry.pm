@@ -43,39 +43,35 @@ sub BUILDARGS {
 
 =head1 Synopsis
 	
-	use DBIx::Retry;
-	my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
+use DBIx::Retry;
+my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
 	
-	# all other method are inherited from DBIx::Connector
-	#get a database handle
-	my $dbh = $conn->dbh;
+# all other method are inherited from DBIx::Connector
+my $dbh = $conn->dbh;  #get a database handle
 	
-	# Do something with the handle - will retry for specified amount of time, should the database not be available
-	$conn->run(fixup => sub {
-		$_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
-	});
+# Do something with the handle - will retry for specified amount of time, should the database not be available
+$conn->run(fixup => sub {
+	$_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
+});
 	
 
 =head1 Description
 
-	DBIx::Retry is extended from DBIx::Connector. It adds the ability to keep retrying 
-	to connect to a database for a specified amount of time in order to execute DBIx::Connector's 
-	run method.
+DBIx::Retry is extended from DBIx::Connector. It adds the ability to keep retrying to connect to a database for a specified amount of time in order to execute DBIx::Connector's run method.
 	
 =head1 Usage
 	
 Simply create a new DBIx::Retry object:
 	
-	my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
+my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
 		 
 Then wrap your operations inside the run method that is inherited from DBIx::Connector:
 	
-	$conn->run(fixup => sub {
-		$_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
-	});
+$conn->run(fixup => sub {
+	$_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
+});
 	
-	Should a database timout occur, DBIx::Retry will retry to connect to the database for the amount of 
-	seconds specified in the "retry_time" attribute.
+Should a database timout occur, DBIx::Retry will retry to connect to the database for the amount of	seconds specified in the "retry_time" attribute.
 
 =attr retry_time 
 	Amount of seconds to retry re-connecting to database, should the database become unavailable. 
