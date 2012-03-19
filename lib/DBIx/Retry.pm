@@ -41,19 +41,19 @@ sub BUILDARGS {
 
 =pod
 
-=head1 SYNOPSIS
+=head1 Synopsis
 	
-	use DBIx::Retry;
-	my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
+use DBIx::Retry;
+my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
 	
-	# all other method are inherited from DBIx::Connector
-	#get a database handle
-	my $dbh = $conn->dbh;
+# all other method are inherited from DBIx::Connector
+#get a database handle
+my $dbh = $conn->dbh;
 	
-	# Do something with the handle - will retry for specified amount of time, should the database not be available
-    $conn->run(fixup => sub {
-		$_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
-	});
+# Do something with the handle - will retry for specified amount of time, should the database not be available
+$conn->run(fixup => sub {
+	$_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
+});
 	
 
 =head1 Description
@@ -90,22 +90,16 @@ Create a new DBIx::Retry object.
 	my $conn = DBIx::Retry->new($dsn, $user, $tools, {timeout => 5, verbose => 1});
 	
 	
-head1 See Also
+=head1 See Also
 
 =item * DBIx::Connector
 
-head1 Author
+=head1 Author
 
 This module was written by:
 
 Hartmut Behrens <hartmut.behrens@gmail.com>
 
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2012 by Hartmut Behrens.
-
-This is free software; you can redistribute it and/or modify it under the
-same terms as the Perl 5 programming language system itself.
 =cut
 
 __END__
