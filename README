@@ -1,1 +1,0 @@
-DBIx::Retry - DBIx::Connector with the ability to retry the run method for a specified amount of time.
