@@ -4,7 +4,6 @@ use parent qw(DBIx::Connector);
 
 use strict;
 use warnings;
-
 #modules
 use Moo;
 use Try::Tiny;
