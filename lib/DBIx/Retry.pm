@@ -78,21 +78,22 @@ Then wrap your operations inside the run method that is inherited from DBIx::Con
 	seconds specified in the "retry_time" attribute.
 
 =attr retry_time 
-Amount of seconds to retry re-connecting to database, should the database become unavailable. 
+	Amount of seconds to retry re-connecting to database, should the database become unavailable. 
+
 
 =attr verbose 
-Enable verbose output.
+	Enable verbose output.
 
 =method new
 
 Create a new DBIx::Retry object.
 
-	my $conn = DBIx::Retry->new($dsn, $user, $tools, {timeout => 5, verbose => 1});
+my $conn = DBIx::Retry->new($dsn, $user, $tools, {timeout => 5, verbose => 1});
 	
 	
 =head1 See Also
 
-=item * DBIx::Connector
+DBIx::Connector
 
 =cut
 
