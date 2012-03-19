@@ -9,7 +9,7 @@ use warnings;
 use Moo;
 use Try::Tiny;
 
-has timeout => (is => 'rw', default => sub { return 30 });
+has timeout => (is => 'rw', required => 1);
 has verbose => (is => 'rw', default => sub { return 1 });
 
 before run => sub {
