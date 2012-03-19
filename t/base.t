@@ -14,7 +14,11 @@ BEGIN {
     $CLASS = 'DBIx::Retry';
     use_ok $CLASS or die;
 }
- 
+
+my ($t,$v) = (3,0);
 # check the basics - copy straight from DBIx::Connector test
-ok my $conn = $CLASS->new, "New object OK";
+ok my $conn = $CLASS->new('dbi::dumy','','',{timeout => $t, verbose => $v} ), "New object OK";
 isa_ok $conn, $CLASS, "New object isa $CLASS";
+
+is $conn->timeout,$t, 'Timeout value set OK';
+is $conn->verbose,$v, 'Verbose value set OK';

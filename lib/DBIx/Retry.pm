@@ -15,7 +15,6 @@ has verbose => (is => 'rw', default => sub { return 1 });
 
 before run => sub {
 	my $self = shift;
-	print "before run\n";
 	my $i = 1;
 	$self->_try_connect;
 	while (! $self->connected) {
