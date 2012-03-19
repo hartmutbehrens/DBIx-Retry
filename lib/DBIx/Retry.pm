@@ -6,7 +6,6 @@ use strict;
 use warnings;
 
 #modules
-use Data::Dumper;
 use Moo;
 use Try::Tiny;
 
