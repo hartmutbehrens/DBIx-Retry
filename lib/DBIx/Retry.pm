@@ -43,17 +43,17 @@ sub BUILDARGS {
 
 =head1 Synopsis
 	
-use DBIx::Retry;
-my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
+	use DBIx::Retry;
+	my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
 	
-# all other method are inherited from DBIx::Connector
-#get a database handle
-my $dbh = $conn->dbh;
+	# all other method are inherited from DBIx::Connector
+	#get a database handle
+	my $dbh = $conn->dbh;
 	
-# Do something with the handle - will retry for specified amount of time, should the database not be available
-$conn->run(fixup => sub {
-	$_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
-});
+	# Do something with the handle - will retry for specified amount of time, should the database not be available
+	$conn->run(fixup => sub {
+		$_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
+	});
 	
 
 =head1 Description
@@ -64,13 +64,13 @@ $conn->run(fixup => sub {
 	
 =head1 Usage
 	
-	Simply create a new DBIx::Retry object:
+Simply create a new DBIx::Retry object:
 	
-		 my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
+	my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
 		 
-	Then wrap your operations inside the run method that is inherited from DBIx::Connector:
+Then wrap your operations inside the run method that is inherited from DBIx::Connector:
 	
-		$conn->run(fixup => sub {
+	$conn->run(fixup => sub {
 		$_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
 	});
 	
@@ -81,7 +81,7 @@ $conn->run(fixup => sub {
 Amount of seconds to retry re-connecting to database, should the database become unavailable. 
 
 =attr verbose 
-Enable verbose output
+Enable verbose output.
 
 =method new
 
@@ -93,12 +93,6 @@ Create a new DBIx::Retry object.
 =head1 See Also
 
 =item * DBIx::Connector
-
-=head1 Author
-
-This module was written by:
-
-Hartmut Behrens <hartmut.behrens@gmail.com>
 
 =cut
 
