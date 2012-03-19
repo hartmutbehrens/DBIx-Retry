@@ -6,8 +6,8 @@ use strict;
 use warnings;
 
 #modules
-use Moo;
 use Data::Dumper;
+use Moo;
 use Try::Tiny;
 
 has timeout => (is => 'rw', default => sub { return 30 });
@@ -15,6 +15,7 @@ has verbose => (is => 'rw', default => sub { return 1 });
 
 before run => sub {
 	my $self = shift;
+	print "before run\n";
 	my $i = 1;
 	$self->_try_connect;
 	while (! $self->connected) {
@@ -33,6 +34,10 @@ sub _try_connect {
 	}
 }
 
-sub BUILDARGS {} #just pass all the construction arguments to DBIx::Connector	
+sub BUILDARGS {
+	my $self = shift;
+	my ($dsn,$user,$pass,$args) = @_;
+	return $args;
+} 	
 1;
 __END__
