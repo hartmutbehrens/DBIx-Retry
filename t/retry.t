@@ -18,12 +18,12 @@ BEGIN {
 }
 
 my ($t,$v) = (3,0);
-ok my $conn = $CLASS->new('dbi::dummy', '', '', {timeout => $t, verbose => $v}),  'Get a connection';
+ok my $conn = $CLASS->new('dbi::dummy', '', '', {retry_time => $t, verbose => $v}),  'Get a connection';
 dies_ok { $conn->run(sub {}) } 'run method dies after timeout without db connection';
 
 #Mock a dummy db connection
 my $module = new Test::MockModule($CLASS);
-ok $conn = $CLASS->new('dbi:ExampleP:dummy', '', '', {timeout => $t, verbose => $v}),  'Get a dummy connection';
+ok $conn = $CLASS->new('dbi:ExampleP:dummy', '', '', {retry_time => $t, verbose => $v}),  'Get a dummy connection';
 # Test with no existing dbh
 $module->mock( _connect => sub {
     pass '_connect should be called';
