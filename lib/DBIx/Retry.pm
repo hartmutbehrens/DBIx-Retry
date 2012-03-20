@@ -40,7 +40,7 @@ sub BUILDARGS {
 
 =pod
 
-=head1 Synopsis
+=head1 SYNOPSIS
 	
 use DBIx::Retry;
 my $conn = DBIx::Retry->new($dsn, $user, $tools, {retry_time => 5});
@@ -54,11 +54,11 @@ $conn->run(fixup => sub {
 });
 	
 
-=head1 Description
+=head1 DESCRIPTION
 
 DBIx::Retry is extended from DBIx::Connector. It adds the ability to keep retrying to connect to a database for a specified amount of time in order to execute DBIx::Connector's run method.
 	
-=head1 Usage
+=head1 USAGE
 	
 Simply create a new DBIx::Retry object:
 	
@@ -86,7 +86,7 @@ Create a new DBIx::Retry object.
 my $conn = DBIx::Retry->new($dsn, $user, $tools, {timeout => 5, verbose => 1});
 	
 	
-=head1 See Also
+=head1 SEE ALSO
 
 DBIx::Connector
 
