@@ -72,12 +72,14 @@ Then wrap your operations inside the run method that is inherited from DBIx::Con
 	
 Should the connection to the database be lost then DBIx::Retry will retry to connect to the database for the amount of	seconds specified in the "retry_time" attribute.
 
-=attr retry_time 
-	Amount of seconds to retry re-connecting to database, should the database become unavailable. 
+=attr retry_time
+ 
+  Amount of seconds to retry re-connecting to database, should the database become unavailable. 
 
 
-=attr verbose 
-	Enable verbose output.
+=attr verbose
+ 
+  Enable verbose output.
 
 =method new
 
