@@ -48,7 +48,7 @@ sub BUILDARGS {
   # all other method are inherited from DBIx::Connector
   my $dbh = $conn->dbh;  #get a database handle
 	
-  # Do something with the handle - will retry for specified amount of time, should the database not be available
+  # Do something with the handle - will retry for specified amount of time, should the database connection be lost
   $conn->run(fixup => sub {
     $_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
   });
@@ -70,7 +70,7 @@ Then wrap your operations inside the run method that is inherited from DBIx::Con
     $_->do('INSERT INTO foo (name) VALUES (?)', undef, 'Fred' );
   });
 	
-Should a database timout occur, DBIx::Retry will retry to connect to the database for the amount of	seconds specified in the "retry_time" attribute.
+Should the connection to the database be lost then DBIx::Retry will retry to connect to the database for the amount of	seconds specified in the "retry_time" attribute.
 
 =attr retry_time 
 	Amount of seconds to retry re-connecting to database, should the database become unavailable. 
