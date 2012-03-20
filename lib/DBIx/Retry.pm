@@ -1,6 +1,6 @@
 package DBIx::Retry;
 use parent qw(DBIx::Connector);
-# ABSTRACT: DBIx::Retry - DBIx::Connector with the ability to retry the run method for a specified amount of time.
+# ABSTRACT: DBIx::Connector with the ability to retry the run method for a specified amount of time.
 
 use strict;
 use warnings;
